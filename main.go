@@ -1,7 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+var port = ":8080"
 
 func main() {
-	fmt.Println("Hello World")
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "Hello Web")
+	})
+
+	log.Println("server running on port: ", port)
+	err := http.ListenAndServe(port, nil)
+	if err != nil {
+		log.Println("error running server: ", err)
+	}
 }
