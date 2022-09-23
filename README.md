@@ -7,7 +7,8 @@ Learning how to build a website with Golang
 - Hello World ✅
 - Hello Web ✅
 - Error Checking ✅
-- Serving Template  
+- Serving Template ✅
+- Reorganizing code 
 - Refactory Project
 - Simple Templating Cache
 - Creating App Config

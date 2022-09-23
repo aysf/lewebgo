@@ -9,14 +9,6 @@ import (
 
 var port = ":8080"
 
-func Home(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "./templates/home.html")
-}
-
-func About(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "./templates/about.html")
-}
-
 func renderTemplate(w http.ResponseWriter, t string) {
 	parsedTemplate, err := template.ParseFiles(t)
 	if err != nil {
