@@ -16,7 +16,7 @@ go run cmd/web/*.go
 - Serving Template ✅
 - Reorganizing code ✅
 - Refactoring Project ✅
-- Templating Layout
+- Templating Layout ✅
 - Simple Templating Cache 
 - Creating App Config
 - Complex Templating Cache
