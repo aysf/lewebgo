@@ -6,6 +6,7 @@ Learning how to build a website with Golang
 
 1. Hello World
 2. Hello Web
+3. Error Checking
 3. Templating Basic
 4. Refactory Project
 5. Simple Templating Cache
