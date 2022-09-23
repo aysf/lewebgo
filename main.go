@@ -37,7 +37,7 @@ func main() {
 	http.HandleFunc("/home", Home)
 	http.HandleFunc("/about", About)
 
-	log.Println("server running on port: ", port)
+	log.Println("server running on port", port)
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		log.Println("error running server: ", err)
