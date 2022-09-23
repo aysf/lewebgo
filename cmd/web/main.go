@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/aysf/lewebgo/pkg/handlers"
 )
 
 var port = ":8080"
@@ -14,8 +16,8 @@ func main() {
 		fmt.Fprint(w, "Hello Web")
 	})
 
-	http.HandleFunc("/home", Home)
-	http.HandleFunc("/about", About)
+	http.HandleFunc("/home", handlers.Home)
+	http.HandleFunc("/about", handlers.About)
 
 	log.Println("server running on port", port)
 	err := http.ListenAndServe(port, nil)
