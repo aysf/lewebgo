@@ -2,23 +2,11 @@ package main
 
 import (
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 )
 
 var port = ":8080"
-
-func renderTemplate(w http.ResponseWriter, t string) {
-	parsedTemplate, err := template.ParseFiles(t)
-	if err != nil {
-		log.Panic("error parsing files", err)
-	}
-	err = parsedTemplate.Execute(w, nil)
-	if err != nil {
-		log.Panic("error execute template", err)
-	}
-}
 
 func main() {
 
