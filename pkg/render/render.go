@@ -1,6 +1,7 @@
 package render
 
 import (
+	"bytes"
 	"errors"
 	"html/template"
 	"log"
@@ -76,11 +77,17 @@ func RenderTemplate(w http.ResponseWriter, templ string) {
 	}
 	// t := tMap[templ]
 
-	err = t.Execute(w, nil)
+	buf := new(bytes.Buffer)
+
+	err = t.Execute(buf, nil)
 	if err != nil {
-		log.Fatal("error executing template", err)
+		log.Fatal("error executing template:", err)
 	}
 
+	_, err = buf.WriteTo(w)
+	if err != nil {
+		log.Fatal("error buffer write:", err)
+	}
 }
 
 func createTemplateCache() (map[string]*template.Template, error) {
