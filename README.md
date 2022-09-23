@@ -4,15 +4,15 @@ Learning how to build a website with Golang
 
 # Section 
 
-1. Hello World
-2. Hello Web
-3. Error Checking
-3. Templating Basic
-4. Refactory Project
-5. Simple Templating Cache
-6. Creating App Config
-7. Complex Templating Cache
-8. Sharing Data with templates
-9. Using 3rd Party Routes
-10. Middleware
-11. Managing Session
+- Hello World ✅
+- Hello Web ✅
+- Error Checking ✅
+- Serving Template  
+- Refactory Project
+- Simple Templating Cache
+- Creating App Config
+- Complex Templating Cache
+- Sharing Data with templates
+- Using 3rd Party Routes
+- Middleware
+- Managing Session

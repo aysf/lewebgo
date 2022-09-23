@@ -1,8 +1,8 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 )
@@ -10,28 +10,22 @@ import (
 var port = ":8080"
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "This is Home Page")
+	renderTemplate(w, "./templates/home.html")
 }
 
 func About(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "This is About Page")
+	renderTemplate(w, "./templates/about.html")
 }
 
-func Divide(w http.ResponseWriter, r *http.Request) {
-	res, err := dividesValue(4, 0)
+func renderTemplate(w http.ResponseWriter, t string) {
+	parsedTemplate, err := template.ParseFiles(t)
 	if err != nil {
-		fmt.Fprint(w, err)
-	} else {
-		fmt.Fprintf(w, "the result is %f", res)
+		log.Panic("error parsing files", err)
 	}
-}
-
-func dividesValue(x, y float32) (float32, error) {
-	if y <= 0 {
-		err := errors.New("cannot divide by 0")
-		return 0, err
+	err = parsedTemplate.Execute(w, nil)
+	if err != nil {
+		log.Panic("error execute template", err)
 	}
-	return x / y, nil
 }
 
 func main() {
@@ -42,7 +36,6 @@ func main() {
 
 	http.HandleFunc("/home", Home)
 	http.HandleFunc("/about", About)
-	http.HandleFunc("/div", Divide)
 
 	log.Println("server running on port: ", port)
 	err := http.ListenAndServe(port, nil)
