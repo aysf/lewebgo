@@ -2,6 +2,12 @@
 
 Learning how to build a website with Golang 
 
+# How to Run
+
+```
+go run cmd/web/*.go
+```
+
 # Section 
 
 - Hello World ✅
