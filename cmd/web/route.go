@@ -15,6 +15,8 @@ func Route(app *config.AppConfig) http.Handler {
 
 	mux.Use(MyCustomlogger)
 	mux.Use(middleware.Logger)
+	mux.Use(NoSurf)
+	mux.Use(SessionLoad)
 
 	mux.Get("/home", handlers.Repo.Home)
 	mux.Get("/about", handlers.Repo.About)

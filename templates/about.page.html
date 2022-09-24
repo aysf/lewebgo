@@ -11,5 +11,15 @@
         <p>helooo</p>
         <p>helooo</p>
         <h2>Taken from data: <strong>{{index .StringMap "greeting"}}</strong></h2>
+        <h2>
+            {{ if eq (index .StringMap "ip") ""}}
+                there is no ip address recorded in the session, go to <a href="/home">home</a> 
+                to save ip address in the session.
+            {{ else }}
+                your IP Address is {{index .StringMap "ip"}}
+            {{ end }}
+        </h2>
+        
+
     </div>
 {{ end }}
