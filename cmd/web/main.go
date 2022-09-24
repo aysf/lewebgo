@@ -32,11 +32,11 @@ func main() {
 		fmt.Fprint(w, "Hello Web")
 	})
 
-	http.HandleFunc("/home", handlers.Repo.Home)
-	http.HandleFunc("/about", handlers.Repo.About)
+	// http.HandleFunc("/home", handlers.Repo.Home)
+	// http.HandleFunc("/about", handlers.Repo.About)
 
 	log.Println("server running on port", port)
-	err = http.ListenAndServe(port, nil)
+	err = http.ListenAndServe(port, Route(&app))
 	if err != nil {
 		log.Println("error running server: ", err)
 	}
