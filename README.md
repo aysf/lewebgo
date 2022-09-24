@@ -23,4 +23,4 @@ go run cmd/web/*.go
 - Sharing Data with templates ✅
 - Using 3rd Party Routes (Chi-Route) ✅
 - Middleware ✅
-- Managing Session
+- Managing Session ✅
