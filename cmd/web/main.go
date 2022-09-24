@@ -22,16 +22,18 @@ func main() {
 		log.Fatal("error creating template cache:", err)
 	}
 
-	app.UseCache = false
+	app.UseCache = true
 
 	render.NewTemplates(&app)
+	r := handlers.NewRepo(&app)
+	handlers.NewHandler(r)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Hello Web")
 	})
 
-	http.HandleFunc("/home", handlers.Home)
-	http.HandleFunc("/about", handlers.About)
+	http.HandleFunc("/home", handlers.Repo.Home)
+	http.HandleFunc("/about", handlers.Repo.About)
 
 	log.Println("server running on port", port)
 	err = http.ListenAndServe(port, nil)
