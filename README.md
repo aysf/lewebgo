@@ -21,6 +21,6 @@ go run cmd/web/*.go
 - Complex Templating Cache ✅
 - Creating App Config ✅
 - Sharing Data with templates ✅
-- Using 3rd Party Routes
+- Using 3rd Party Routes (Chi-Route) ✅
 - Middleware
 - Managing Session
