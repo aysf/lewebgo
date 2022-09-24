@@ -18,6 +18,7 @@ go run cmd/web/*.go
 - Refactoring Project ✅
 - Templating Layout ✅
 - Simple Templating Cache ✅
+- Complex Templating Cache ✅
 - Creating App Config ✅
 - Complex Templating Cache
 - Sharing Data with templates
