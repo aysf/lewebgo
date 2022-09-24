@@ -22,5 +22,5 @@ go run cmd/web/*.go
 - Creating App Config ✅
 - Sharing Data with templates ✅
 - Using 3rd Party Routes (Chi-Route) ✅
-- Middleware
+- Middleware ✅
 - Managing Session
