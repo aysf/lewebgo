@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/aysf/lewebgo/config"
+	"github.com/aysf/lewebgo/pkg/model.go"
 )
 
 // func RenderTemplate(w http.ResponseWriter, t string) {
@@ -69,7 +70,7 @@ func NewTemplates(a *config.AppConfig) {
 	app = a
 }
 
-func RenderTemplate(w http.ResponseWriter, templ string) {
+func RenderTemplate(w http.ResponseWriter, templ string, td *model.TemplateData) {
 
 	// tMap := make(map[string]*template.Template)
 	var tMap map[string]*template.Template
@@ -94,7 +95,7 @@ func RenderTemplate(w http.ResponseWriter, templ string) {
 
 	buf := new(bytes.Buffer)
 
-	err = t.Execute(buf, nil)
+	err = t.Execute(buf, td)
 	if err != nil {
 		log.Fatal("error executing template:", err)
 	}

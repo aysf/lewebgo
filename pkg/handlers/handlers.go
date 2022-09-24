@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/aysf/lewebgo/config"
+	"github.com/aysf/lewebgo/pkg/model.go"
 	"github.com/aysf/lewebgo/pkg/render"
 )
 
@@ -22,9 +23,15 @@ func NewHandler(r *Repository) {
 }
 
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "home.page.tmpl")
+	render.RenderTemplate(w, "home.page.tmpl", &model.TemplateData{})
 }
 
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "about.page.tmpl")
+
+	sm := map[string]string{}
+	sm["greeting"] = "Hello Template Data"
+
+	render.RenderTemplate(w, "about.page.tmpl", &model.TemplateData{
+		StringMap: sm,
+	})
 }
