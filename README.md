@@ -20,7 +20,7 @@ go run cmd/web/*.go
 - Simple Templating Cache ✅
 - Complex Templating Cache ✅
 - Creating App Config ✅
-- Sharing Data with templates
+- Sharing Data with templates ✅
 - Using 3rd Party Routes
 - Middleware
 - Managing Session
