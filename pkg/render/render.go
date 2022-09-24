@@ -72,9 +72,19 @@ func NewTemplates(a *config.AppConfig) {
 func RenderTemplate(w http.ResponseWriter, templ string) {
 
 	// tMap := make(map[string]*template.Template)
+	var tMap map[string]*template.Template
 	var err error
 
-	tMap := app.TemplateCache
+	if app.UseCache {
+		log.Println("use template cache")
+		tMap = app.TemplateCache
+	} else {
+		log.Println("creating template")
+		tMap, err = CreateTemplateCache()
+		if err != nil {
+			log.Fatal("error creating template:", err)
+		}
+	}
 
 	t, ok := tMap[templ]
 	if !ok {
@@ -98,7 +108,7 @@ func RenderTemplate(w http.ResponseWriter, templ string) {
 func CreateTemplateCache() (map[string]*template.Template, error) {
 	cacheMap := map[string]*template.Template{}
 
-	pages, err := filepath.Glob("./templates/*.page.html")
+	pages, err := filepath.Glob("./templates/*.page.tmpl")
 	if err != nil {
 		return cacheMap, err
 	}
@@ -112,14 +122,14 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 			return cacheMap, err
 		}
 
-		matches, err := filepath.Glob("./templates/*.layout.html")
+		matches, err := filepath.Glob("./templates/*.layout.tmpl")
 		if err != nil {
 			return cacheMap, err
 		}
 
 		if len(matches) > 0 {
 
-			tc, err = tc.ParseGlob("./templates/*.layout.html")
+			tc, err = tc.ParseGlob("./templates/*.layout.tmpl")
 			if err != nil {
 				return cacheMap, err
 			}

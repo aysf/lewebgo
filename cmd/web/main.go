@@ -22,6 +22,8 @@ func main() {
 		log.Fatal("error creating template cache:", err)
 	}
 
+	app.UseCache = false
+
 	render.NewTemplates(&app)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
