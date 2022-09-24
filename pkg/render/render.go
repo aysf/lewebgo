@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/aysf/lewebgo/config"
 )
 
 // func RenderTemplate(w http.ResponseWriter, t string) {
@@ -61,15 +63,18 @@ import (
 // 	return nil
 // }
 
+var app *config.AppConfig
+
+func NewTemplates(a *config.AppConfig) {
+	app = a
+}
+
 func RenderTemplate(w http.ResponseWriter, templ string) {
 
 	// tMap := make(map[string]*template.Template)
 	var err error
 
-	tMap, err := createTemplateCache()
-	if err != nil {
-		log.Panic("error creating template:", err)
-	}
+	tMap := app.TemplateCache
 
 	t, ok := tMap[templ]
 	if !ok {
@@ -90,7 +95,7 @@ func RenderTemplate(w http.ResponseWriter, templ string) {
 	}
 }
 
-func createTemplateCache() (map[string]*template.Template, error) {
+func CreateTemplateCache() (map[string]*template.Template, error) {
 	cacheMap := map[string]*template.Template{}
 
 	pages, err := filepath.Glob("./templates/*.page.html")
