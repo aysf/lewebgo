@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/aysf/lewebgo/config"
-	"github.com/aysf/lewebgo/pkg/model.go"
+	"github.com/aysf/lewebgo/pkg/model"
 	"github.com/aysf/lewebgo/pkg/render"
 )
 

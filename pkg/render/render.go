@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/aysf/lewebgo/config"
-	"github.com/aysf/lewebgo/pkg/model.go"
+	"github.com/aysf/lewebgo/pkg/model"
 )
 
 // func RenderTemplate(w http.ResponseWriter, t string) {
