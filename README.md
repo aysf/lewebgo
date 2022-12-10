@@ -24,4 +24,4 @@ go run cmd/web/*.go
 - Using 3rd Party Routes (Chi-Route) ✅
 - Middleware ✅
 - Managing Session ✅
-- Serving static file 
+- Serving static file ✅
